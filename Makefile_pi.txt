@@ -1,0 +1,13 @@
+CC=gcc
+CFLAGS=-I.
+LDFLAGS=-lwiringPi -lwiringPiDev
+EXECUTABLE=temper
+
+src := $(wildcard *.c)
+objects := $(patsubst %.c, %.o, $(src))
+
+$(EXECUTABLE): $(objects)
+	$(CC) -o $(EXECUTABLE) $(objects) $(LDFLAGS)
+.PHONY : clean
+clean:
+        rm $(objects)
